@@ -37,8 +37,10 @@ public class Sfft {
 		
 		inst.sigPrepare(); 
 		
+		inst.readConfig();
 		inst.sfft();
 		inst.savePoints();
+		
 		
 	}
 	
@@ -60,9 +62,6 @@ public class Sfft {
 			sPoints.add(new ComplexNumber(Math.sin(2 * PI * 80 * k / this.fs), 0));
 		}
 		
-		ArrayList<ComplexNumber> fftPoints = this.fft(sPoints, 0, N);
-		
-		System.out.println("");
 	}
 	
 	public void sfft() {
@@ -80,7 +79,7 @@ public class Sfft {
 		ComplexNumber [][] power = new ComplexNumber[countW][window];
 		
 		for (i = 0; i < countW; i++) {
-			ArrayList<ComplexNumber> fftPoints = fft(sPoints, i*window, window);
+			ArrayList<ComplexNumber> fftPoints = Fft.fft(sPoints, i*window, window);
 	        for (j = 0; j < window; j++) {
 	        	power[i][j] = new ComplexNumber(fftPoints.get(j).real, fftPoints.get(j).img);
 	        }

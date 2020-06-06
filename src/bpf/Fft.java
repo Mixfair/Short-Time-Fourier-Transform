@@ -15,7 +15,7 @@ public class Fft {
 		
 	}
 
-	ArrayList<ComplexNumber> Fft( ArrayList<ComplexNumber> Points, int nstart, int nstep )
+	public static ArrayList<ComplexNumber> fft( ArrayList<ComplexNumber> Points, int nstart, int nstep )
 	{
 		
 	    double tmp, angle, rw, iw;
@@ -100,7 +100,7 @@ public class Fft {
 	    return re;
 	} 
 	
-	int getAddr(int in, int logn)
+	public static int getAddr(int in, int logn)
 	{
 	    int res = 0;
 	    for (int i = 0; i < logn; ++i)
